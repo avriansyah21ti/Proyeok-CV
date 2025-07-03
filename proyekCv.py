@@ -8,10 +8,10 @@ import math
 # --- INISIALISASI APLIKASI FLASK ---
 app = Flask(__name__)
 
-# --- PENGATURAN KALIBRASI (Sama seperti kode Anda) ---
+# --- PENGATURAN KALIBRASI ---
 PIXELS_PER_CM = 37.0
 
-# --- FUNGSI-FUNGSI OPENCV (Disalin langsung dari skrip Anda) ---
+# --- FUNGSI-FUNGSI OPENCV ---
 
 def get_contours(frame):
     """
@@ -82,7 +82,7 @@ def generate_frames():
         if not success:
             break
         else:
-            # Lakukan pemrosesan gambar di sini (sama seperti di loop utama Anda)
+            # Lakukan pemrosesan gambar di sini 
             contours = get_contours(frame)
             if contours:
                 for c in contours[:5]:
@@ -117,45 +117,3 @@ if __name__ == '__main__':
     print("Memulai server Flask...")
     print("Buka http://127.0.0.1:5000 di browser Anda.")
     app.run(debug=True)
-
-# ======================================================================
-# File: templates/index.html
-# Letakkan kode di bawah ini di dalam file 'templates/index.html'
-# ======================================================================
-"""
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webcam - Pengukur Objek Real-time</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
-
-    <div class="w-full max-w-4xl mx-auto bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8">
-        <header class="text-center mb-6">
-            <h1 class="text-3xl md:text-4xl font-bold text-cyan-400">📏 Pengukur Objek via Webcam</h1>
-            <p class="text-gray-400 mt-2">Streaming video langsung dari server Python (Flask + OpenCV).</p>
-        </header>
-
-        <!-- Area Tampilan Video -->
-        <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-lg">
-            <!-- Elemen img ini akan menampilkan streaming dari Flask -->
-            <img src="{{ url_for('video_feed') }}" class="w-full h-full object-cover" alt="Video Stream">
-        </div>
-
-        <div class="mt-6 text-center text-gray-500 text-sm">
-            <p><strong>Catatan:</strong> Pemrosesan video dilakukan di server. Untuk menghentikan, tutup terminal tempat Anda menjalankan 'app.py'.</p>
-        </div>
-    </div>
-
-</body>
-</html>
-"""
